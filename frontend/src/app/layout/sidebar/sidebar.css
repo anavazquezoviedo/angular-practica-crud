@@ -1,0 +1,26 @@
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 240px;
+    height: 100vh;
+    
+    background-color: #1D2C43;
+    color: #fff;
+
+    .sidebar__header {
+        padding: 1.5rem;
+    }
+
+    .sidebar__nav {
+        flex: 1;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .sidebar__footer {
+        padding: 1.5rem;
+    }
+}
