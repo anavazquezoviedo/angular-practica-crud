@@ -18,6 +18,11 @@ export const routes: Routes = [
 
             },
             {
+                path: 'cars/list',
+                loadComponent: () => import('./features/cars/car-list/car-list').then(m => m.CarListComponent)
+
+            },
+            {
                 path: 'cars/new',
                 loadComponent: () => import('./features/cars/car-create/car-create').then(m => m.CarCreateComponent)
             },
