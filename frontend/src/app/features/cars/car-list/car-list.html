@@ -1,1 +1,28 @@
-<pre>{{ cars | json }}</pre>
+<section class="car-list">
+    <h2>Listado de vehículos</h2>
+
+    <table class="car-table">
+        <thead>
+            <tr>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (car of cars; track car.id){
+            <tr>
+                <td>
+                    {{ car.brand.name }}
+                </td>
+                <td>
+                    {{ car.model.name }}
+                </td>
+                  <td>
+                    {{ car.total }}
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</section>
