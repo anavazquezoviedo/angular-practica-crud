@@ -16,7 +16,20 @@ export const routes: Routes = [
                 path: 'cars',
                 loadComponent: () => import('./features/cars/cars').then(m => m.CarsComponent)
 
+            },
+            {
+                path: 'cars/new',
+                loadComponent: () => import('./features/cars/car-create/car-create').then(m => m.CarCreateComponent)
+            },
+            {
+                path: 'cars/:id/edit',
+                loadComponent: () => import('./features/cars/car-edit/car-edit').then(m => m.CarEditComponent)
+            },
+            {
+                path: 'cars/:id',
+                loadComponent: () => import('./features/cars/car-detail/car-detail').then(m => m.CarDetailComponent)
             }
+
         ]
     }
 

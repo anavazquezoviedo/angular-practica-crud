@@ -1,0 +1,37 @@
+.cars-page {
+  padding: 1.5rem;
+}
+
+.cars-page__header {
+  margin-bottom: 1.5rem;
+}
+
+.cars-page__header h1,
+.cars-page__header p {
+  margin: 0;
+}
+
+.cars-page__header p {
+  margin-top: 0.5rem;
+  color: #4b5563;
+}
+
+.cars-page__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.cars-page__actions a {
+  padding: 0.7rem 1rem;
+  border-radius: 0.5rem;
+  background-color: #2563eb;
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.cars-page__actions a:hover,
+.cars-page__actions a.is-active {
+  background-color: #1d4ed8;
+}
