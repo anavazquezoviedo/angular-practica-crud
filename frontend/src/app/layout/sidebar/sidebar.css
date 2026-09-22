@@ -1,26 +1,116 @@
 .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 240px;
-    height: 100vh;
-    
-    background-color: #1D2C43;
-    color: #fff;
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  width: 240px;
+  min-height: 100vh;
+  padding: 1.5rem 1rem;
+  background: var(--color-sidebar);
+  color: #ffffff;
+}
 
-    .sidebar__header {
-        padding: 1.5rem;
-    }
+.sidebar__header {
+  padding: 0.5rem 0.75rem 2.5rem;
+}
 
-    .sidebar__nav {
-        flex: 1;
-        padding: 1rem;
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-    }
+.sidebar__logo {
+  color: #ffffff;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
 
-    .sidebar__footer {
-        padding: 1.5rem;
-    }
+.sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sidebar__link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 2.75rem;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  color: rgb(255 255 255 / 78%);
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.sidebar__link:hover {
+  background: var(--color-sidebar-hover);
+  color: #ffffff;
+  transform: translateX(2px);
+}
+
+.sidebar__link--active {
+  background: var(--color-primary);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgb(37 99 235 / 25%);
+}
+
+.sidebar__icon {
+  flex: 0 0 auto;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.sidebar__footer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: auto;
+  padding: 1rem 0.75rem 0.5rem;
+  border-top: 1px solid rgb(255 255 255 / 12%);
+  color: rgb(255 255 255 / 78%);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+@media (max-width: 640px) {
+  .sidebar {
+    width: 76px;
+    align-items: center;
+    padding: 1.5rem 0.75rem;
+  }
+
+  .sidebar__header {
+    padding-inline: 0;
+  }
+
+  .sidebar__logo {
+    font-size: 0;
+  }
+
+  .sidebar__logo::first-letter {
+    font-size: 1.25rem;
+  }
+
+  .sidebar__link {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .sidebar__link span,
+  .sidebar__footer span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .sidebar__footer {
+    justify-content: center;
+    width: 100%;
+    padding-inline: 0;
+  }
 }
