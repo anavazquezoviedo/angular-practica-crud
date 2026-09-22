@@ -1,101 +1,143 @@
 .car-list {
-  width: min(100% - 3rem, 1100px);
-  margin: 0 auto;
-  padding: 3rem 0;
+    width: min(100% - 3rem, 1100px);
+    margin: 0 auto;
+    padding: 3rem 0;
 }
 
 .car-list__header {
-  margin-bottom: 1.75rem;
+    margin-bottom: 1.75rem;
 }
 
 .car-list__eyebrow {
-  margin: 0 0 0.5rem;
-  color: var(--color-primary);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+    margin: 0 0 0.5rem;
+    color: var(--color-primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 .car-list__title {
-  margin: 0;
-  color: var(--color-text);
-  font-size: clamp(1.75rem, 3vw, 2.25rem);
-  font-weight: 700;
-  letter-spacing: -0.04em;
+    margin: 0;
+    color: var(--color-text);
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
 }
 
 .car-list__description {
-  margin: 0.5rem 0 0;
-  color: var(--color-text-muted);
-  font-size: 0.95rem;
-  line-height: 1.5;
+    margin: 0.5rem 0 0;
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
 }
 
 .car-list__table-wrapper {
-  overflow-x: auto;
-  border: 1px solid var(--color-border);
-  border-radius: 0.75rem;
-  background: var(--color-surface);
-  box-shadow: var(--shadow-surface);
+    overflow-x: auto;
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    background: var(--color-surface);
+    box-shadow: var(--shadow-surface);
 }
 
 .car-list__table {
-  width: 100%;
-  min-width: 480px;
-  border-collapse: collapse;
-  text-align: left;
+    width: 100%;
+    min-width: 480px;
+    border-collapse: collapse;
+    text-align: left;
 }
 
 .car-list__table th,
 .car-list__table td {
-  padding: 1rem 1.25rem;
+    padding: 1rem 1.25rem;
 }
 
 .car-list__table th {
-  border-bottom: 1px solid var(--color-border);
-  background: #f8fafc;
-  color: var(--color-text-muted);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+    border-bottom: 1px solid var(--color-border);
+    background: #f8fafc;
+    color: var(--color-text-muted);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
 }
 
 .car-list__table td {
-  border-bottom: 1px solid var(--color-border);
-  color: var(--color-text);
-  font-size: 0.9rem;
-  font-weight: 500;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text);
+    font-size: 0.9rem;
+    font-weight: 500;
 }
 
 .car-list__row {
-  transition: background-color 160ms ease;
+    transition: background-color 160ms ease;
 }
 
 .car-list__row:hover {
-  background: #f8fbff;
+    background: #f8fbff;
 }
 
 .car-list__row:last-child td {
-  border-bottom: 0;
+    border-bottom: 0;
 }
 
 .car-list__count {
-  margin: 0.875rem 0 0;
-  color: var(--color-text-muted);
-  font-size: 0.8rem;
-  font-weight: 500;
+    margin: 0.875rem 0 0;
+    color: var(--color-text-muted);
+    font-size: 0.8rem;
+    font-weight: 500;
 }
 
-@media (max-width: 640px) {
-  .car-list {
-    width: min(100% - 2rem, 1100px);
-    padding: 2rem 0;
-  }
+.car-list__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
 
-  .car-list__table th,
-  .car-list__table td {
-    padding: 0.875rem 1rem;
-  }
+.car-list__action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid transparent;
+    border-radius: 0.45rem;
+    color: var(--color-text-muted);
+    background: #f8fafc;
+    transition:
+        color 160ms ease,
+        background-color 160ms ease,
+        border-color 160ms ease,
+        transform 160ms ease;
+}
+
+.car-list__action:hover {
+    color: var(--color-primary);
+    background: #eff6ff;
+    border-color: #dbeafe;
+    transform: translateY(-1px);
+}
+
+.car-list__action:focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 2px;
+}
+
+.car-list__action-icon {
+    width: 1rem;
+    height: 1rem;
+    pointer-events: none;
+}
+
+
+@media (max-width: 640px) {
+    .car-list {
+        width: min(100% - 2rem, 1100px);
+        padding: 2rem 0;
+    }
+
+    .car-list__table th,
+    .car-list__table td {
+        padding: 0.875rem 1rem;
+    }
 }
