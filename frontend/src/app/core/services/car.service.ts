@@ -14,14 +14,11 @@ export class CarService {
   private readonly apiURL = environment.apiBaseUrl;
   private readonly carListUrl = this.apiURL + API_ENDPOINTS.cars;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getCars(): Observable<PaginatedResponseDto<CarSummary>> {
     return this.http.get<PaginatedResponseDto<CarSummary>>(this.carListUrl);
   }
 
-  getCarById(id: string) {
-
-  }
-
+  getCarById(id: string) {}
 }
