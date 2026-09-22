@@ -2,15 +2,29 @@
     <div class="sidebar__header">
         <span class="sidebar__logo">GestiAuto</span>
     </div>
+
     <nav class="sidebar__nav" aria-label="Navegación principal">
-        <a routerLink="/home" routerLinkActive="active">
-            Home
+        <a class="sidebar__link" routerLink="/home" routerLinkActive="sidebar__link--active">
+            <svg class="sidebar__icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1V10Z" />
+            </svg>
+            <span>Home</span>
         </a>
-        <a routerLink="/cars" routerLinkActive="active">
-            Vehículos
+
+        <a class="sidebar__link" routerLink="/cars" routerLinkActive="sidebar__link--active">
+            <svg class="sidebar__icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M5 16h14l-1-6H6l-1 6Z" />
+                <path d="m7 10 1.5-3h7L17 10M7 16v2m10-2v2M7.5 13h.01M16.5 13h.01" />
+            </svg>
+            <span>Vehículos</span>
         </a>
     </nav>
+
     <div class="sidebar__footer">
+        <svg class="sidebar__icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="12" cy="8" r="3.5" />
+            <path d="M5 20a7 7 0 0 1 14 0" />
+        </svg>
         <span>Usuario</span>
     </div>
 </aside>
