@@ -1,57 +1,66 @@
 <section class="car-list">
-    <header class="car-list__header">
-        <p class="car-list__eyebrow">Gestión de inventario</p>
-        <h2 class="car-list__title">Listado de vehículos</h2>
-        <p class="car-list__description">Consulta los vehículos registrados en el sistema.</p>
-        <a routerLink="/cars/new" routerLinkActive="is-active">Crear vehículo</a>
-    </header>
+  <header class="car-list__header">
+    <p class="car-list__eyebrow">Gestión de inventario</p>
+    <h2 class="car-list__title">Listado de vehículos</h2>
+    <p class="car-list__description">Consulta los vehículos registrados en el sistema.</p>
+    <a routerLink="/cars/new" routerLinkActive="is-active">Crear vehículo</a>
+  </header>
 
-    <div class="car-list__table-wrapper">
-        <table class="car-list__table">
-            <thead class="car-list__table-head">
-                <tr>
-                    <th scope="col">Marca</th>
-                    <th scope="col">Modelo</th>
-                    <th scope="col">Total</th>
-                    <th scope="col">Acciones</th>
-                </tr>
-            </thead>
-            <tbody class="car-list__table-body">
-                @for (car of cars(); track car.id) {
-                <tr class="car-list__row">
-                    <td>{{ car.brand.name }}</td>
-                    <td>{{ car.model.name }}</td>
-                    <td>{{ car.total }}</td>
-                    <td class="car-list__actions"> <a [routerLink]="['/cars', car.id]" class="car-list__action"
-                            aria-label="Ver detalle">
-                            <svg class="car-list__action-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="1.8">
-                                <path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z" />
-                                <circle cx="12" cy="12" r="2.5" />
-                            </svg>
+  @if (isLoading()) {
+  <p class="car-list__status">Cargando vehículos...</p>
+  } @else if (errorMessage()) {
+  <p class="car-list__status car-list__status--error">
+    {{ errorMessage() }}
+  </p>
+  } @else if (cars().length === 0) {
+  <p class="car-list__status">No hay vehículos registrados.</p>
+  }@else {
+  <div class="car-list__table-wrapper">
+    <table class="car-list__table">
+      <thead class="car-list__table-head">
+        <tr>
+          <th scope="col">Marca</th>
+          <th scope="col">Modelo</th>
+          <th scope="col">Total</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody class="car-list__table-body">
+        @for (car of cars(); track car.id) {
+        <tr class="car-list__row">
+          <td>{{ car.brand.name }}</td>
+          <td>{{ car.model.name }}</td>
+          <td>{{ car.total }}</td>
+          <td class="car-list__actions"> <a [routerLink]="['/cars', car.id]" class="car-list__action"
+              aria-label="Ver detalle">
+              <svg class="car-list__action-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.8">
+                <path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z" />
+                <circle cx="12" cy="12" r="2.5" />
+              </svg>
 
-                        </a>
-                        <a [routerLink]="['/cars', car.id, 'edit']" class="car-list__action"
-                            aria-label="Editar vehículo">
-                            <svg class="car-list__action-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="1.8">
-                                <path d="m4 16.5-.8 4.3 4.3-.8L19 8.5a2.1 2.1 0 0 0-3-3L4 16.5Z" />
-                                <path d="m14.5 7.5 2 2" />
-                            </svg>
+            </a>
+            <a [routerLink]="['/cars', car.id, 'edit']" class="car-list__action" aria-label="Editar vehículo">
+              <svg class="car-list__action-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.8">
+                <path d="m4 16.5-.8 4.3 4.3-.8L19 8.5a2.1 2.1 0 0 0-3-3L4 16.5Z" />
+                <path d="m14.5 7.5 2 2" />
+              </svg>
 
-                        </a>
-                        <a href="#" class="car-list__action">
-                            <svg class="car-list__action-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="1.8">
-                                <path d="M4 7h16M10 11v6m4-6v6M6 7l1 13h10l1-13M9 7V4h6v3" />
-                            </svg>
-                        </a>
-                    </td>
-                </tr>
-                }
-            </tbody>
-        </table>
-    </div>
+            </a>
+            <a href="#" class="car-list__action">
+              <svg class="car-list__action-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.8">
+                <path d="M4 7h16M10 11v6m4-6v6M6 7l1 13h10l1-13M9 7V4h6v3" />
+              </svg>
+            </a>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
 
-    <p class="car-list__count">Vehículos cargados: {{ cars().length }}</p>
+  <p class="car-list__count">Vehículos cargados: {{ cars().length }}</p>
+  }
 </section>

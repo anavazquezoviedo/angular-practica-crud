@@ -1,7 +1,9 @@
 import { Component, OnInit, signal } from '@angular/core';
+import { finalize } from 'rxjs';
+import { RouterLink } from '@angular/router';
+
 import { CarService } from '../../../core/services/car.service';
 import { CarSummary } from '../../../core/models/car-summary.model';
-import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-car-list',
@@ -9,21 +11,25 @@ import { RouterLink } from '@angular/router';
   templateUrl: './car-list.html',
   styleUrl: './car-list.css',
 })
-
 export class CarListComponent implements OnInit {
+  cars = signal<CarSummary[]>([]);
+  isLoading = signal(true);
+  errorMessage = signal('');
 
-cars = signal<CarSummary[]>([]);
-
-
-  constructor(private carService: CarService) { }
+  constructor(private carService: CarService) {}
 
   ngOnInit(): void {
-    this.carService.getCars().subscribe(response => {
-      //console.log('Respuesta:', response);
-      //console.log('Items:', response.items);
-       this.cars.set(response.items);
-     // console.log('Cars asignado:', this.cars);
-    })
+    this.carService
+      .getCars()
+      .pipe(finalize(() => this.isLoading.set(false)))
+      .subscribe({
+        next: (response) => {
+          this.cars.set(response.items);
+        },
+        error: (error) => {
+          console.error('Error cargando vehículos:', error);
+          this.errorMessage.set('No se han podido cargar los vehículos. Inténtelo de nuevo.');
+        },
+      });
   }
-
 }
