@@ -10,7 +10,7 @@
             </tr>
         </thead>
         <tbody>
-            @for (car of cars; track car.id){
+            @for (car of cars(); track car.id) {
             <tr>
                 <td>
                     {{ car.brand.name }}
@@ -18,11 +18,13 @@
                 <td>
                     {{ car.model.name }}
                 </td>
-                  <td>
+                <td>
                     {{ car.total }}
                 </td>
             </tr>
             }
+
+            <p>Longitud de cars: {{ cars().length }}</p>
         </tbody>
     </table>
 </section>
