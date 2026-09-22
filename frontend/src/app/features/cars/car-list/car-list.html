@@ -6,6 +6,9 @@
         <a routerLink="/cars/new" routerLinkActive="is-active">Crear vehículo</a>
     </header>
 
+    @if (isLoading()) {
+    <p class="car-list__status">Cargando vehículos...</p>
+    } @else {
     <div class="car-list__table-wrapper">
         <table class="car-list__table">
             <thead class="car-list__table-head">
@@ -54,4 +57,5 @@
     </div>
 
     <p class="car-list__count">Vehículos cargados: {{ cars().length }}</p>
+    }
 </section>
