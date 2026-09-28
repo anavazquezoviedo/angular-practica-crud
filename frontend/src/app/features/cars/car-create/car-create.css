@@ -1,11 +1,15 @@
 :host {
-  display: block;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  column-gap: 1rem;
   width: min(100% - 3rem, 700px);
   margin: 0 auto;
   padding: 3rem 0;
 }
 
 h2 {
+  grid-column: 1 / -1;
+  grid-row: 1;
   margin: 0 0 1.75rem;
   color: var(--color-text);
   font-size: clamp(1.75rem, 3vw, 2.25rem);
@@ -14,6 +18,8 @@ h2 {
 }
 
 label {
+  grid-column: 1;
+  grid-row: 2;
   display: block;
   margin-bottom: 0.5rem;
   color: var(--color-text);
@@ -22,6 +28,7 @@ label {
 }
 
 select {
+  grid-row: 3;
   display: block;
   width: 100%;
   min-height: 2.75rem;
@@ -37,6 +44,14 @@ select {
     border-color 160ms ease,
     box-shadow 160ms ease,
     background-color 160ms ease;
+}
+
+#brand {
+  grid-column: 1;
+}
+
+#model {
+  grid-column: 2;
 }
 
 select:hover:not(:disabled) {
@@ -58,7 +73,21 @@ select:disabled {
 
 @media (max-width: 640px) {
   :host {
+    grid-template-columns: 1fr;
     width: min(100% - 2rem, 700px);
     padding: 2rem 0;
+  }
+
+  h2 {
+    grid-column: auto;
+  }
+
+  label,
+  select {
+    grid-column: 1;
+  }
+
+  select {
+    grid-row: auto;
   }
 }

@@ -2,25 +2,40 @@
 
 <label for="brand">Marca</label>
 
-<select
-  id="brand"
-  name="brand"
-  [ngModel]="selectedBrandId()"
-  (ngModelChange)="onBrandChange($event)"
-  [disabled]="isLoadingBrands()"
-  >
+<select id="brand" name="brand" [ngModel]="selectedBrandId()" (ngModelChange)="onBrandChange($event)"
+  [disabled]="isLoadingBrands()">
 
   <option value="">
-   @if (isLoadingBrands()){
+    @if (isLoadingBrands()){
     Cargando Marcas...
-   } @else{
+    } @else{
     Selecciona una marca
-   }
+    }
   </option>
 
   @for (brand of brands(); track brand.id) {
-    <option [value]="brand.id">
-      {{ brand.name }}
-    </option>
+  <option [value]="brand.id">
+    {{ brand.name }}
+  </option>
   }
+</select>
+
+<select id="model" name="model" [ngModel]="selectedModelId()" (ngModelChange)="selectedModelId.set($event)"
+  [disabled]="isLoadingModels()">
+
+
+  <option value="">
+    @if (isLoadingModels()){
+    Cargando Modelos...
+    } @else{
+    Selecciona un modelo
+    }
+  </option>
+
+  @for (model of models(); track model.id){
+  <option [value]="model.id">
+    {{ model.name }}
+  </option>
+  }
+
 </select>
