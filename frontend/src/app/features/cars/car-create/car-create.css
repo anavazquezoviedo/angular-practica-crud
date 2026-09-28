@@ -1,0 +1,64 @@
+:host {
+  display: block;
+  width: min(100% - 3rem, 700px);
+  margin: 0 auto;
+  padding: 3rem 0;
+}
+
+h2 {
+  margin: 0 0 1.75rem;
+  color: var(--color-text);
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--color-text);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+select {
+  display: block;
+  width: 100%;
+  min-height: 2.75rem;
+  margin-bottom: 1.25rem;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+  cursor: pointer;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    background-color 160ms ease;
+}
+
+select:hover:not(:disabled) {
+  border-color: var(--color-primary);
+}
+
+select:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+  border-color: var(--color-primary);
+}
+
+select:disabled {
+  background: #f8fafc;
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+@media (max-width: 640px) {
+  :host {
+    width: min(100% - 2rem, 700px);
+    padding: 2rem 0;
+  }
+}

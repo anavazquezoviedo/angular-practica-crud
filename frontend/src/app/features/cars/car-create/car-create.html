@@ -1,1 +1,26 @@
-<p>car-create works!</p>
+<h2>Crear coche</h2>
+
+<label for="brand">Marca</label>
+
+<select
+  id="brand"
+  name="brand"
+  [ngModel]="selectedBrandId()"
+  (ngModelChange)="onBrandChange($event)"
+  [disabled]="isLoadingBrands()"
+  >
+
+  <option value="">
+   @if (isLoadingBrands()){
+    Cargando Marcas...
+   } @else{
+    Selecciona una marca
+   }
+  </option>
+
+  @for (brand of brands(); track brand.id) {
+    <option [value]="brand.id">
+      {{ brand.name }}
+    </option>
+  }
+</select>
