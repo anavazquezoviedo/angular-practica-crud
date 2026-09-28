@@ -19,9 +19,15 @@
   </option>
   }
 </select>
+@if (errorMessageBrands()) {
+<p class="car-create__error">
+  {{ errorMessageBrands() }}
+</p>
+}
 
+<label for="models">Modelos</label>
 <select id="model" name="model" [ngModel]="selectedModelId()" (ngModelChange)="selectedModelId.set($event)"
-  [disabled]="isLoadingModels()">
+  [disabled]="!selectedBrandId() || isLoadingModels()">
 
 
   <option value="">
@@ -39,3 +45,10 @@
   }
 
 </select>
+
+
+@if (errorMessageModels()) {
+<p class="car-create__error">
+  {{ errorMessageModels() }}
+</p>
+}
